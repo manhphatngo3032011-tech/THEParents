@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-cream font-body text-ink antialiased; line-height: 1.65; }
+  :focus-visible { outline: 3px solid #c9972b; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors; }
+  .btn-primary { @apply bg-teal text-cream hover:bg-teal-dark; }
+  .btn-secondary { @apply border-2 border-teal text-teal hover:bg-teal hover:text-cream; }
+}
+
+/* Long-form article typography. Lines are capped near 70 characters for readability. */
+@layer components {
+  .article-body { @apply mx-auto max-w-[70ch] text-lg; line-height: 1.85; }
+  .article-body > * + * { @apply mt-5; }
+  .article-body h2 { @apply mt-10 font-display text-3xl text-teal; scroll-margin-top: 5rem; }
+  .article-body h3 { @apply mt-8 text-2xl font-semibold text-teal; scroll-margin-top: 5rem; }
+  .article-body a { @apply text-teal underline underline-offset-4; }
+  .article-body ul { @apply list-disc pl-6; }
+  .article-body ol { @apply list-decimal pl-6; }
+  .article-body li + li { @apply mt-1; }
+  .article-body blockquote { @apply border-l-4 border-gold pl-4 italic; }
+  .article-body img { @apply h-auto max-w-full rounded-lg; }
+  .article-body pre { @apply overflow-x-auto rounded-lg bg-ink p-4 text-sm text-cream; line-height: 1.6; }
+  .article-body code { @apply rounded bg-teal/10 px-1 py-0.5 text-[0.9em]; }
+  .article-body pre code { @apply bg-transparent p-0; }
+  .article-body table { @apply w-full border-collapse text-base; }
+  .article-body th, .article-body td { @apply border border-teal/30 px-3 py-2 text-left align-top; }
+  .article-body th { @apply bg-teal/10; }
+}
